@@ -16,10 +16,23 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 # Aqui se importa el metodo creado
-from Proyecto1.views import saludo, despedida
+from Proyecto1.views import saludo, despedida, dame_fecha, calcula_edad1, calcula_edad2
 
+"""
+NOTA:
+    path(dato1, dato2),
+
+Donde:
+    dato1 = Sera el nombre(personalidado), por el cual llamaremos al metodo de la vista(view) en la pagina web, tambien 
+            se puede agregar parametros para los metodos.
+    dato2 = Sera el nombre del metodo(view) 
+
+EJM ==>> path('fecha/', dame_fecha),  """
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('saludo/', saludo),  # Aqui se le pasa el url(saludo) para llamarlo por vista 'saludo' en la web
     path('despedida/', despedida),  # El primer parametro el nombre de la url y el segundo es el nombre de la funcion
+    path('fecha/', dame_fecha),  # Para agregar el metodo para mostrar la fecha y hora del sistema.
+    path('cal_edad1/<int:anyo>', calcula_edad1),  # Aqui se pasa un valor en el enlace 'calcula_edad/<int:anyo>'
+    path('cal_edad2/<int:edad>/<int:anyo>', calcula_edad2),  # Aqui se pasa 2 parametros
 ]

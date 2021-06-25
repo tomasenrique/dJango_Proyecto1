@@ -20,7 +20,7 @@ from django.template import Template, Context  # para poder usar las plantilla y
 #         </body>
 #     </html>""")
 
-# Este es otro ejm de pasar html
+# Este es otro ejm de pasar html - Video 3
 documento = """ <html>
                     <body>
                         <h1 style="color:#00f; text-align:center">Hola a todos mi primera pagina con django</h1>
@@ -43,6 +43,53 @@ def saludo(request):
 def despedida(request):
     return HttpResponse("Hasta luego people.")
 
-# ======================================================================================================================
-# ======================================================================================================================
 
+# ======================================================================================================================
+# ======================================================================================================================
+# Video 3
+# Muestra la fecha del sistema
+# Este sera su enlaza en la web ==>> http://localhost:8000/fecha/
+def dame_fecha(request):
+    dame_actual = datetime.datetime.now()  # Obtiene la fecha del sistema
+    documento_fecha = """ <html>
+                              <body>
+                                    <h1>Fecha y hora actuales: %s</h1>
+                              </body>
+                          </html>""" % dame_actual
+    return HttpResponse(documento_fecha)
+
+
+# ======================================================================================================================
+# ======================================================================================================================
+# Video 4
+# Aqui se le esta pasando un parametro 'anyo' para que este se reciba en la url path
+# Este sera su enlaza en la web ==>> http://localhost:8000/cal_edad1/1990
+def calcula_edad1(request, anyo):
+    edad_actual = 40
+    periodo = anyo - 2020
+    edad_futura = edad_actual + periodo
+
+    documento_fecha = """ <html>
+                          <body>
+                              <h1>En el año %s tendrás %s</h1>
+                          </body>
+                      </html>""" % (anyo, edad_futura)
+    return HttpResponse(documento_fecha)
+
+
+# Aqui se pasan dos parametros para que los reciba la url del path
+# Este sera su enlaza en la web ==>> http://localhost:8000/cal_edad2/21/2000
+def calcula_edad2(request, edad, anyo):
+    edad_actual = edad
+    periodo = anyo - 2020
+    edad_futura = edad_actual + periodo
+
+    documento_fecha = """ <html>
+                          <body>
+                              <h1>En el año %s tendrás %s</h1>
+                          </body>
+                      </html>""" % (anyo, edad_futura)
+    return HttpResponse(documento_fecha)
+
+# ======================================================================================================================
+# ======================================================================================================================

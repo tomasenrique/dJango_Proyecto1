@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+# Aqui se importa el metodo creado
+from Proyecto1.views import saludo, despedida
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('saludo/', saludo),  # Aqui se le pasa el url(saludo) para llamarlo por vista 'saludo' en la web
+    path('despedida/', despedida),  # El primer parametro el nombre de la url y el segundo es el nombre de la funcion
 ]

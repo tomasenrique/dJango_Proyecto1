@@ -111,4 +111,68 @@ def saludo2(request):
 
     return HttpResponse(documento_p)
 
-#  C:\D\Lenguajes\Django\proyecto1\proyecto1\templates
+
+# D:\Lenguajes\Django\Proyecto1\Proyecto1\templates
+
+# ======================================================================================================================
+# ======================================================================================================================
+
+# PLANTILLAS 2
+
+#  Aqui se trabajara con templates dinamicas
+
+# Este sera su enlaza en la web ==>> http://localhost:8000/saludo3
+def saludo3(request):
+    nombre = "tomas"
+    apellido = "estrada"
+    mi_fecha = datetime.datetime.now()
+
+    doc_externo = open("D:/Lenguajes/Django/Proyecto1/Proyecto1/templates/miplantilla2.html")  # Se carga la plantilla
+
+    plt = Template(doc_externo.read())  # Se crea un objeto de tipo templates para cargar la plantilla
+    doc_externo.close()  # Se cierra el documento
+
+    # Se crea el contexto para la plantilla y un diccionario para poder pasar los datos del servidor
+    # a la pagina miplantilla2.html(vista)
+    # Se unsa un diccionario  de 'clave:valor' para pasar los datos a a vista, donde:
+    #
+    # nombre_persona => Sera el nombre que se le da a la variable al enviarla a la vista y la forma de invocarla.
+    # nombre => Sera el nombre de la variable que se quiere enviar a la vista.
+    diccionario1 = {"nombre_persona": nombre, "apellido": apellido, "fecha": mi_fecha}
+    ctx = Context(diccionario1)
+
+    documento_p = plt.render(ctx)  # se crea el renderizado de la pagina y se le pasa el contexto
+
+    return HttpResponse(documento_p)
+
+
+# ===========================================================
+#  Trabajando con una clase para pasarle los valores a la pagina
+
+class Persona(object):
+    def __init__(self, nombre, apellido):
+        self.nombre = nombre
+        self.apellido = apellido
+
+
+# Este sera su enlaza en la web ==>> http://localhost:8000/saludo4
+def saludo4(request):
+    p1 = Persona("Enrique", "Torres")
+
+    mi_fecha = datetime.datetime.now()
+
+    doc_externo = open("D:/Lenguajes/Django/Proyecto1/Proyecto1/templates/miplantilla2.html")  # Se carga la plantilla
+
+    plt = Template(doc_externo.read())  # Se crea un objeto de tipo templates para cargar la plantilla
+    doc_externo.close()  # Se cierra el documento
+
+    # Se crea el contexto para la plantilla y un diccionario para poder pasar los datos a la pagina miplantilla2.html
+    diccionario1 = {"nombre_persona": p1.nombre, "apellido": p1.apellido, "fecha": mi_fecha}
+    ctx = Context(diccionario1)
+
+    documento_p = plt.render(ctx)  # se crea el renderizado de la pagina y se le pasa el contexto
+
+    return HttpResponse(documento_p)
+
+# ======================================================================================================================
+# ======================================================================================================================

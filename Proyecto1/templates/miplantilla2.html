@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Plantilla 2</title>
+</head>
+<body>
+<h1 style="color: red">Trabajando con nuestra segunda plantilla</h1>
+
+
+{# Aqui se obtiene el dato de la variable 'nombre' que esta en el diccionario en la funcion de la vista  #}
+<p>Mi nombre es: {{ nombre_persona.upper }}</p> {# Se aplica mayusculas #}
+<p>Mi apellido es: {{ apellido }}</p>
+<p>Fecha: {{ fecha }}</p>
+
+{# Por medio del punto se puede acceder a las propiedades de la variable    #}
+<p>Day: {{ fecha.day }}</p>
+<p>Moth: {{ fecha.month }}</p>
+<p>Year: {{ fecha.year }}</p>
+
+<p>Hour: {{ fecha.hour }}</p>
+<p>Minute: {{ fecha.minute }}</p>
+<p>Second: {{ fecha.second }}</p>
+
+
+
+
+</body>
+</html>

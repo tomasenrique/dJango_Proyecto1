@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 # Aqui se importa el metodo creado
-from Proyecto1.views import saludo, despedida, dame_fecha, calcula_edad1, calcula_edad2, saludo2
+from Proyecto1.views import saludo, despedida, dame_fecha, calcula_edad1, calcula_edad2, saludo2, saludo3,saludo4
 
 """
 NOTA:
@@ -36,4 +36,6 @@ urlpatterns = [
     path('cal_edad1/<int:anyo>', calcula_edad1),  # Aqui se pasa un valor en el enlace 'calcula_edad/<int:anyo>'
     path('cal_edad2/<int:edad>/<int:anyo>', calcula_edad2),  # Aqui se pasa 2 parametros
     path('saludo2/', saludo2),  # para usar con plantilla
+    path('saludo3/', saludo3),  # Para pasar datos a la plantilla
+    path('saludo4/', saludo4),  # Para pasar datos usando una clase creada
 ]

@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 # Aqui se importa el metodo creado
-from Proyecto1.views import saludo, despedida, dame_fecha, calcula_edad1, calcula_edad2, saludo2, saludo3,saludo4
+from Proyecto1.views import saludo, despedida, dame_fecha, calcula_edad1, calcula_edad2, saludo2, saludo3,saludo4, saludo5
 
 """
 NOTA:
@@ -38,4 +38,5 @@ urlpatterns = [
     path('saludo2/', saludo2),  # para usar con plantilla
     path('saludo3/', saludo3),  # Para pasar datos a la plantilla
     path('saludo4/', saludo4),  # Para pasar datos usando una clase creada
+    path('saludo5/', saludo5),  # Para pasar una lista con datos
 ]

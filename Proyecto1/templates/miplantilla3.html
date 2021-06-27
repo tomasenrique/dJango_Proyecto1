@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Plantilla3</title>
+</head>
+<body>
+<h1 style="color: blue">Trabajando con nuestra tercera plantilla</h1>
+
+<p>
+    Aqui se vera como se recibe una lista de datos desde el servidor.
+</p>
+
+{# Aqui se obtiene el dato de la variable 'nombre' que esta en el diccionario en la funcion de la vista  #}
+<p>Mi nombre es: {{ nombre_persona.upper }}</p> {# Se aplica mayusculas #}
+<p>Mi apellido es: {{ apellido }}</p>
+<p>Fecha: {{ fecha }}</p>
+
+{# Aqui se usa una lista de forma simple #}
+<p>Lista 1 entera: {{ lista1 }}</p> {# Esto es una lista que se mostrara en la vista web  #}
+<p>Lista1 ==>> primer dato: {{ lista1.1 }}</p> {# aqui solo un dato  #}
+
+<p>Lista 2: {{ lista2 }}</p> {# aqui solo la lista vacia #}
+
+<p>================</p>
+
+{# Aqui se usara un forEach para recorrer la lista #}
+<P><strong>Temas del curso: imprimiendo lista sin estilo</strong></P>
+<p>
+    {% for elTema in lista1 %}
+        {{ elTema }}
+    {% endfor %}
+</p>
+
+<p>================</p>
+
+{# Aqui se usara un forEach y se agrega orden de listas para la vista#}
+<P><strong>Temas del curso: imprimiendo lista agregando lista &lt;li&gt;</strong></P>
+<p>
+<ul>
+    {% for elTema in lista1 %}
+        <li>{{ elTema }}</li>
+
+    {% endfor %}
+</ul>
+</p>
+
+<p>================</p>
+
+{# Aqui se usara con un condicional  para verificar si la lista esta vacia o no#}
+<P><strong>Temas del curso 2: Esta es la lista vacia</strong></P>
+<p>
+<ul>
+    {% if lista2 %}
+        {% for elTema in lista2 %}
+            <li>{{ elTema }}</li>
+        {% endfor %}
+    {% else %}
+        <p>No hay elementos que mostrar</p>
+    {% endif %}
+</ul>
+
+</p>
+
+
+
+
+</body>
+</html>

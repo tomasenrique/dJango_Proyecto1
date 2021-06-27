@@ -176,3 +176,27 @@ def saludo4(request):
 
 # ======================================================================================================================
 # ======================================================================================================================
+# PLANTILLAS 3
+
+#  Aqui se pasaran listas de datos a la pagina
+
+# Este sera su enlaza en la web ==>> http://localhost:8000/saludo5
+def saludo5(request):
+    p2 = Persona("Luis", "Silva")
+    lista1 = ["Plantillas", "Modelos", "Formularios", "Vistas", "Despliegue"]
+    lista2 = []
+
+    mi_fecha = datetime.datetime.now()
+
+    doc_externo = open("D:/Lenguajes/Django/Proyecto1/Proyecto1/templates/miplantilla3.html")  # Se carga la plantilla
+    plt = Template(doc_externo.read())  # Se crea un objeto de tipo templates para cargar la plantilla
+    doc_externo.close()  # Se cierra el documento
+
+    # Se crea el contexto para la plantilla y un diccionario para poder pasar los datos a la pagina miplantilla2.html
+    diccionario1 = {"nombre_persona": p2.nombre, "apellido": p2.apellido, "fecha": mi_fecha, "lista1": lista1,
+                    "lista2": lista2}
+    ctx = Context(diccionario1)
+
+    documento_p = plt.render(ctx)  # se crea el renderizado de la pagina y se le pasa el contexto
+
+    return HttpResponse(documento_p)

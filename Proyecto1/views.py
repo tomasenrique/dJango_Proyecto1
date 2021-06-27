@@ -91,5 +91,24 @@ def calcula_edad2(request, edad, anyo):
                       </html>""" % (anyo, edad_futura)
     return HttpResponse(documento_fecha)
 
+
 # ======================================================================================================================
 # ======================================================================================================================
+# PLANTILLAS 1
+# Aqui se cargara una plantilla al metodo que actua como una vista
+
+# Este sera su enlaza en la web ==>> http://localhost:8000/saludo2
+def saludo2(request):
+    # doc_externo = open("C:\D\Lenguajes\Django\proyecto1\proyecto1\templates\miplantilla.html")  # Se carga la plantilla
+    doc_externo = open("D:/Lenguajes/Django/Proyecto1/Proyecto1/templates/miplantilla.html")  # Se carga la plantilla
+
+    plt = Template(doc_externo.read())  # Se crea un objeto de tipo templates para cargar la plantilla
+    doc_externo.close()  # Se cierra el documento
+
+    ctx = Context()  # Se crea el contexto para la plantilla
+
+    documento_p = plt.render(ctx)  # se crea el renderizado de la pagina y se le pasa el contexto
+
+    return HttpResponse(documento_p)
+
+#  C:\D\Lenguajes\Django\proyecto1\proyecto1\templates

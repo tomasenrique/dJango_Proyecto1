@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Barra</title>
+</head>
+
+<style>
+    {# se aplica un estilo a la barra    #}
+    #barra {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-transform: uppercase;
+    }
+
+    #barra li {
+        display: inline;
+        margin: 0 20px;
+    }
+</style>
+
+<body>
+{% comment %}
+        ESTA SERA UNA PLANTILLA QUE SE INSERTARA EN LA PLANTILLA 'miplantilla2.html' POR MEDIO DEL
+        METODO: {% include "superior/barra.html" %}
+        EN LA POSICION QUE QUERAMOS QUE ESTE PUESTA
+    {% endcomment %}
+
+
+<ul id="barra">
+    <li>Home</li>
+    <li>Servicios</li>
+    <li>Quienes somos</li>
+    <li>Contactos</li>
+    <li>Acerca de</li>
+</ul>
+
+
+</body>
+</html>

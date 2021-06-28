@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Plantilla 6</title>
+    <style>
+
+        .titulo1 {
+            text-align: center;
+            font-weight: bold;
+            background-color: #25f;
+            color: #fff;
+        }
+
+        .titulo2 {
+            text-align: center;
+            font-weight: bold;
+            font-size: 25px;
+            color: #00f;
+        }
+
+
+        .cod_azul {
+            font-weight: bold;
+            color: #0000ff;
+        }
+
+        .cod_rojo {
+            font-weight: bold;
+            color: #ff0000;
+        }
+
+        .cod_verde {
+            font-weight: bold;
+            color: #00ff00;
+        }
+
+        .cod_negro {
+            font-weight: bold;
+            color: #000000;
+        }
+
+    </style>
+</head>
+<body>
+
+<h1 class="titulo1">Trabajando con nuestra sexta plantilla - PAQUETE SHORTCUTS Y COMO INCRUSTAR PLANTILLAS</h1>
+
+<p class="cod_negro">
+    USANDO PAQUETE SHORTCUTS<br>
+    Uso del paquete 'shortcuts' con el metodo <span class="cod_azul">render()</span> para simpleificar los
+    trabajos<br><br>
+    pagina =>
+    <span class="cod_azul">https://docs.djangoproject.com/en/3.0/topics/http/shortcuts/</span><br><br>
+
+
+    Metodo => <span class="cod_azul">render(request, template_name, context=None, content_type=None, status=None, using=None)</span>
+    <br>
+    Donde los 2 siguentes son los mas usados:<br>
+    <span class="cod_rojo">request:</span> Argumento obligatorio<br>
+    <span class="cod_rojo">template_name:</span> La pagina web<br>
+
+    Usando este metodo se optimisaria el codigo, ver le metodo saludo6 y compara con el saludo7
+</p>
+
+
+{# Esta es un condicional if y else#}
+{% if nombre_persona == 'Federica' %} {# nombre_persona = tomas #}
+    <p>El curso lo imparte: {{ nombre_persona }}</p>
+{% else %}
+    <p> No hay profesor para este curso</p>
+{% endif %}
+
+{% comment %}
+        Esto es un comentario de varias lineas
+    {% endcomment %}
+
+<p>================</p>
+
+<p> Sin filtros: </p>
+<ul>
+    {% if lista1 %}
+        {% for tema in lista1 %}
+            <li>{{ tema }}</li>
+        {% endfor %}
+    {% else %}
+        <p>No hay lista</p>
+    {% endif %}
+</ul>
+
+<p>================</p>
+
+<p> Con filtro: "|first" Se muestra la primera letra de cada elemento</p>
+<ul>
+    {% if lista1 %}
+        {% for tema in lista1 %}
+            <li>{{ tema|first }}</li>{# Muestra solo la primera letra de cada palabra #}
+        {% endfor %}
+    {% else %}
+        <p>No hay lista</p>
+    {% endif %}
+</ul>
+
+<p>================</p>
+
+<p> Con filtro encadenado: "|first|lower" Se muestra la primera letra de cada elemento en minuscula</p>
+<ul>
+    {% if lista1 %}
+        {% for tema in lista1 %}
+            <li>{{ tema|first|lower }}</li> {# Filtro Encadenado #}
+        {% endfor %}
+    {% else %}
+        <p>No hay lista</p>
+    {% endif %}
+</ul>
+
+    <p>===============================================================================================</p>
+<p>
+    Aqui se insertara una plantilla (Barra de navegacion) - solo es una muestra
+</p>
+    {% include "superior/barra.html" %} {# Esta es la plantilla agregada #}
+
+
+</body>
+</html>
+
+<!--
+&nbsp; &nbsp; &nbsp;
+
+<span class="cod_rojo"> </span>
+<span class="cod_verde"> </span>
+<span class="cod_azul"> </span>
+<span class="cod_negro"> </span>
+
+<br><br><br>
+
+
+
+-->

@@ -264,3 +264,39 @@ def saludo6(request):
 
 # ======================================================================================================================
 # ======================================================================================================================
+# PLANTILLAS 6 - PAQUETE SHORTCUTS Y COMO INCRUSTAR PLANTILLAS
+
+""" USANDO PAQUETE SHORTCUTS
+    Uso del paquete 'shortcuts' con el metodo render() para simpleificar los trabajos
+    pagina => https://docs.djangoproject.com/en/3.0/topics/http/shortcuts/
+
+    Metodo => render(request, template_name, context=None, content_type=None, status=None, using=None)
+    Donde los 2 siguentes son los mas usados:
+    request: Argumento obligatorio
+    template_name: La pagina web
+
+    Usando este metodo se optimisaria el codigo, ver le metodo saludo6 y compara con el saludo7
+"""
+
+from django.shortcuts import render  # para usar el metodo render()
+
+
+def saludo7(request):
+    p4 = Persona("Federica", "Berti")
+    lista1 = ["Plantillas", "Modelos", "Formularios", "Vistas", "Despliegue"]
+    lista2 = []
+
+    mi_fecha = datetime.datetime.now()
+
+    # Se crea el contexto para la plantilla y un diccionario para poder pasar los datos a la pagina miplantilla2.html
+    diccionario1 = {"nombre_persona": p4.nombre, "apellido": p4.apellido, "fecha": mi_fecha, "lista1": lista1,
+                    "lista2": lista2}
+
+    return render(request, "miplantilla6.html", diccionario1)
+
+
+# ==================================================
+""" USANDO PLANTILLAS INCRUSTADAS
+    ver archivo barra.html y miplantilla2.html para obserbar el ejemplo de como insertar la plantilla
+
+"""

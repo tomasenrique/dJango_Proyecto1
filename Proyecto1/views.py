@@ -174,6 +174,7 @@ def saludo4(request):
 
     return HttpResponse(documento_p)
 
+
 # ======================================================================================================================
 # ======================================================================================================================
 # PLANTILLAS 3
@@ -200,3 +201,66 @@ def saludo5(request):
     documento_p = plt.render(ctx)  # se crea el renderizado de la pagina y se le pasa el contexto
 
     return HttpResponse(documento_p)
+
+
+# ======================================================================================================================
+# PLANTILLAS 4
+
+#  Aqui se pasaran listas de datos a la pagina
+
+# Este sera su enlaza en la web ==>> http://localhost:8000/saludo5_1
+def saludo5_1(request):
+    p2 = Persona("Luis", "Silva")
+    lista1 = ["Plantillas", "Modelos", "Formularios", "Vistas", "Despliegue"]
+
+    mi_fecha = datetime.datetime.now()
+
+    doc_externo = open("D:/Lenguajes/Django/Proyecto1/Proyecto1/templates/miplantilla4.html")  # Se carga la plantilla
+    plt = Template(doc_externo.read())  # Se crea un objeto de tipo templates para cargar la plantilla
+    doc_externo.close()  # Se cierra el documento
+
+    # Se crea el contexto para la plantilla y un diccionario para poder pasar los datos a la pagina miplantilla2.html
+    diccionario1 = {"nombre_persona": p2.nombre, "apellido": p2.apellido, "fecha": mi_fecha, "lista": lista1}
+    ctx = Context(diccionario1)
+
+    documento_p = plt.render(ctx)  # se crea el renderizado de la pagina y se le pasa el contexto
+
+    return HttpResponse(documento_p)
+
+
+# ======================================================================================================================
+# ======================================================================================================================
+# PLANTILLAS 5 - CARGADORES DE PLANTILLAS
+
+"""Aqui se vera como cargar una o varias templates de forma mas optima para no usar 'close()' o el 'open()' que son 
+metodos que estan consumiento muchos recursos.
+
+Para ello hay que ir al archivo 'setting.py' y buscar la lista 'TEMPLATES' y dentro de el se vera otra lista interna
+llamada 'DIRS' que aqui se contendra todos los directorios que contengan las paginas web(plantillas - templates) 
+
+Usando esta forma se ahorra varias lineas de codigo y se optimiza todo ya que aqui ya no se usaria un contexto
+"""
+from django.template import loader  # Esto es para poder cargar las plantillas (templates) => metodo saludo6
+
+
+# Este sera su enlaza en la web ==>> http://localhost:8000/saludo6
+def saludo6(request):
+    p3 = Persona("Esther", "Galdeano")
+    lista1 = ["Plantillas", "Modelos", "Formularios", "Vistas", "Despliegue"]
+    lista2 = []
+
+    mi_fecha = datetime.datetime.now()
+
+    # Aqui se ubica el template por medio del archivo 'setting.py' y el metodo indicado
+    doc_externo = loader.get_template('miplantilla5.html')
+
+    # Se crea el contexto para la plantilla y un diccionario para poder pasar los datos a la pagina miplantilla2.html
+    diccionario1 = {"nombre_persona": p3.nombre, "apellido": p3.apellido, "fecha": mi_fecha, "lista1": lista1,
+                    "lista2": lista2}
+
+    documento_p = doc_externo.render(diccionario1)  # se crea el renderizado de la pagina y se le pasa el contexto
+
+    return HttpResponse(documento_p)
+
+# ======================================================================================================================
+# ======================================================================================================================

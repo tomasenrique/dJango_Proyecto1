@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Plantilla 4</title>
+</head>
+<body>
+
+<h1 style="color: purple">Trabajando con nuestra cuarta plantilla</h1>
+
+<p>
+    Como se usa las condicionales.
+</p>
+
+{# Esta es un condicional if y else#}
+{% if nombre_persona == 'Luis' %} {# nombre_persona = tomas #}
+    <p>El curso lo imparte: {{ nombre_persona }}</p>
+{% else %}
+    <p> No hay profesor para este curso</p>
+{% endif %}
+
+{% comment %}
+        Esto es un comentario de varias lineas
+    {% endcomment %}
+
+<p>================</p>
+
+<p> Sin filtros: </p>
+<ul>
+    {% if lista %}
+        {% for tema in lista %}
+            <li>{{ tema }}</li>
+        {% endfor %}
+    {% else %}
+        <p>No hay lista</p>
+    {% endif %}
+</ul>
+
+<p>================</p>
+
+<p> Con filtro: "|first" Se muestra la primera letra de cada elemento</p>
+<ul>
+    {% if lista %}
+        {% for tema in lista %}
+            <li>{{ tema|first }}</li>{# Muestra solo la primera letra de cada palabra #}
+        {% endfor %}
+    {% else %}
+        <p>No hay lista</p>
+    {% endif %}
+</ul>
+
+<p>================</p>
+
+<p> Con filtro encadenado: "|first|lower" Se muestra la primera letra de cada elemento en minuscula</p>
+<ul>
+    {% if lista %}
+        {% for tema in lista %}
+            <li>{{ tema|first|lower }}</li> {# Filtro Encadenado #}
+        {% endfor %}
+    {% else %}
+        <p>No hay lista</p>
+    {% endif %}
+</ul>
+
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Plantilla 5</title>
+    <style>
+
+        .titulo1 {
+            text-align: center;
+            font-weight: bold;
+            background-color: #25f;
+            color: #fff;
+        }
+
+        .titulo2 {
+            text-align: center;
+            font-weight: bold;
+            font-size: 25px;
+            color: #00f;
+        }
+
+
+        .cod_azul {
+            font-weight: bold;
+            color: #0000ff;
+        }
+
+        .cod_rojo {
+            font-weight: bold;
+            color: #ff0000;
+        }
+
+        .cod_verde {
+            font-weight: bold;
+            color: #00ff00;
+        }
+
+        .cod_negro {
+            font-weight: bold;
+            color: #000000;
+        }
+
+    </style>
+</head>
+<body>
+<h1 style="color: purple">Trabajando con nuestra quinta plantilla - CARGADORES DE PLANTILLAS</h1>
+
+<p>
+    Aqui se vera como cargar una o varias templates de forma mas optima para no usar
+    <span class="cod_negro">'close()'</span> o el <span class="cod_negro"> 'open()' </span> que son
+    metodos que estan consumiento muchos recursos.
+
+    Para ello hay que ir al archivo <span class="cod_azul">'setting.py'</span> y buscar la lista
+    <span class="cod_negro">'TEMPLATES'</span> y dentro de el se vera otra lista interna llamada
+    <span class="cod_rojo">'DIRS'</span> que aqui se contendra todos los directorios que contengan las
+    paginas web(plantillas - templates)
+
+    Usando esta forma se ahorra varias lineas de codigo y se optimiza todo ya que aqui ya no se usaria un contexto
+</p>
+
+<p>
+    Se usa el método: <span class="cod_azul">loader.get_template('miplantilla5.html')</span>
+</p>
+
+<p class="cod_negro">
+    TEMPLATES = [<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'BACKEND':
+    'django.template.backends.django.DjangoTemplates',<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'DIRS':
+    ["D:/Lenguajes/Django/proyecto1/proyecto1/templates/"], <span class="cod_azul"><== Se agrega la carpeta de los templates a usar</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'APP_DIRS': True,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'OPTIONS': {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'context_processors': [<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'django.template.context_processors.debug',<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'django.template.context_processors.request',<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'django.contrib.auth.context_processors.auth',<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'django.contrib.messages.context_processors.messages',<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br>
+    ]<br>
+</p>
+
+{# Esta es un condicional if y else#}
+{% if nombre_persona == 'Esther' %} {# nombre_persona = tomas #}
+    <p>El curso lo imparte: {{ nombre_persona }}</p>
+{% else %}
+    <p> No hay profesor para este curso</p>
+{% endif %}
+
+{% comment %}
+        Esto es un comentario de varias lineas
+    {% endcomment %}
+
+<p>================</p>
+
+<p> Sin filtros: </p>
+<ul>
+    {% if lista1 %}
+        {% for tema in lista1 %}
+            <li>{{ tema }}</li>
+        {% endfor %}
+    {% else %}
+        <p>No hay lista</p>
+    {% endif %}
+</ul>
+
+<p>================</p>
+
+<p> Con filtro: "|first" Se muestra la primera letra de cada elemento</p>
+<ul>
+    {% if lista1 %}
+        {% for tema in lista1 %}
+            <li>{{ tema|first }}</li>{# Muestra solo la primera letra de cada palabra #}
+        {% endfor %}
+    {% else %}
+        <p>No hay lista</p>
+    {% endif %}
+</ul>
+
+<p>================</p>
+
+<p> Con filtro encadenado: "|first|lower" Se muestra la primera letra de cada elemento en minuscula</p>
+<ul>
+    {% if lista1 %}
+        {% for tema in lista1 %}
+            <li>{{ tema|first|lower }}</li> {# Filtro Encadenado #}
+        {% endfor %}
+    {% else %}
+        <p>No hay lista</p>
+    {% endif %}
+</ul>
+
+</body>
+</html>
+
+
+<!--
+&nbsp; &nbsp; &nbsp;
+
+<span class="cod_rojo"> </span>
+<span class="cod_verde"> </span>
+<span class="cod_azul"> </span>
+<span class="cod_negro"> </span>
+
+<br><br><br>
+
+
+
+-->

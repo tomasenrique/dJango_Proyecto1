@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {# Con esto lo que se hace es indicar que en cada plantilla que herede de la plantilla base(padre), tenga un titulo diferente #}
+        {% block title %}
+            {# Contenido de titulo que varia por pagina      #}
+        {% endblock %}
+    </title>
+    <style>
+
+        .titulo1 {
+            text-align: center;
+            font-weight: bold;
+            background-color: #25f;
+            color: #fff;
+        }
+
+        .titulo2 {
+            text-align: center;
+            font-weight: bold;
+            font-size: 25px;
+            color: #00f;
+        }
+
+
+        .cod_azul {
+            font-weight: bold;
+            color: #0000ff;
+        }
+
+        .cod_rojo {
+            font-weight: bold;
+            color: #ff0000;
+        }
+
+        .cod_verde {
+            font-weight: bold;
+            color: #00ff00;
+        }
+
+        .cod_negro {
+            font-weight: bold;
+            color: #000000;
+        }
+
+    </style>
+</head>
+<body>
+{# ESTA SERA LA PLANTILLA PADRE   #}
+{% include "superior/barra.html" %}
+
+<h1 style="background-color: yellow; color: green; text-align: center">MI PRIMERA PAGINA - TOMAS ESTRADA</h1>
+
+<H3>PRUEBAS DE HERENCIA DE PLANTILLAS</H3>
+
+Cuando una vista va a heredar de una plantilla base hay que indicarle por medio de:
+<span class="cod_negro">
+    &lbrace;% extends "base/plantillaBase.html" %&rbrace;  {# Aqui se aplica la herencia de plantilla#}
+</span><br><br>
+
+
+<table border="3">
+    <tr>
+        <td>Asi se declara</td>
+        <td>Asi se llama</td>
+    </tr>
+    <tr>
+        <td>
+            <p class="cod_negro">
+                Contenido a heredar para el titulo<br>
+                <span class="cod_azul">
+                &lt;title&gt;<br>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &lbrace;% block title %&rbrace;<br>
+                           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            <span class="cod_rojo">Contenido a personalizar en cada vista que herede<br></span>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &lbrace;% endblock %&rbrace;<br>
+                &lt;/title&gt;<br>
+                </span>
+            </p>
+        </td>
+        <td>
+            <p class="cod_negro">
+                {# Aqui se aplica el titulo que cambiara en cada pagina #}
+                &lbrace; % block title %&rbrace;<br>
+                &nbsp; &nbsp; &nbsp; &nbsp;<span class="cod_rojo">Contenido a variar segun vista.<br></span>
+                &lbrace;% endblock %&rbrace;<br>
+            </p>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <p class="cod_negro">
+                Etiqueta para el contenido que cambiara de cada pantilla<br>
+                <span class="cod_azul">
+                        &lbrace;% block content %&rbrace;<br>
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp;<span class="cod_rojo">Todo lo que este entre estas 2 etiquetas cambiara<br></span>
+                        &lbrace;% endblock %&rbrace;<br>
+                </span>
+            </p>
+        </td>
+        <td>
+            <p class="cod_negro">
+                &lbrace;% block content %&rbrace;<br> {# Aqui se aplicara el contenido que variara en cada plantilla #}
+                &nbsp; &nbsp; &nbsp; &nbsp;<span class="cod_rojo">Contenido a variar segun vista.</span><br>
+                &lbrace;% endblock %&rbrace;<br>
+            </p>
+        </td>
+    </tr>
+
+
+    <tr>
+        <td></td>
+        <td></td>
+    </tr>
+
+</table>
+
+
+{% comment %}
+&lbrace; ==>> {
+&rbrace; ==>> }
+{% endcomment %}
+
+<br><br><br>
+
+
+{# Etiqueta para el contenido que cambiara de cada pantilla   #}
+{% block content %}
+    {# Todo lo que este entre estas 2 etiquetas cambiara       #}
+{% endblock %}
+
+<p style="background-color: yellow; color: green; text-align: right">Gracias por todo el aprendizaje</p>
+
+</body>
+</html>

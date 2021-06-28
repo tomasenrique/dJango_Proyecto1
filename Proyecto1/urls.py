@@ -17,8 +17,7 @@ from django.contrib import admin
 from django.urls import path
 # Aqui se importa el metodo creado
 from Proyecto1.views import saludo, despedida, dame_fecha, calcula_edad1, calcula_edad2, saludo2, saludo3, saludo4, \
-    saludo5, saludo5_1, saludo6,saludo7
-
+    saludo5, saludo5_1, saludo6, saludo7, plantilla1, plantilla2
 
 """
 NOTA:
@@ -44,4 +43,6 @@ urlpatterns = [
     path('saludo5_1/', saludo5_1),  # Para probar un condicional y filtros
     path('saludo6/', saludo6),  # Para mostrar datos en los templates usando el archivo setting.py
     path('saludo7/', saludo7),  # Usando 'shortcuts' con el metodo simpleificado render()
+    path('plantilla1/', plantilla1),  # Para la herencia de plantillas, de base.html a plantilla1.html
+    path('plantilla2/', plantilla2)  # Para la herencia de plantillas, de base.html a plantilla2.html
 ]

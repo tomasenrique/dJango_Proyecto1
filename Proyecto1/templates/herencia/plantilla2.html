@@ -1,0 +1,12 @@
+{# ESTA SERA LA PLANTILLA HIJA QUE HEREDA DE 'plantillaBase.html' #}
+
+{% extends "base/plantillaBase.html" %} {# Aqui se aplica la herencia de plantilla#}
+
+{% block title %} Esta es la plantilla 2 {% endblock %}  {# Aqui se aplica el titulo que cambiara en cada pagina #}
+
+{% block content %} {# Aqui se aplicara el contenido que variara en cada plantilla #}
+    <p> Estamos a: {{ dame_fecha }}</p>
+
+ <iframe width="560" height="315" src="https://www.youtube.com/embed/nvHuZkKRcSU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+{% endblock %}

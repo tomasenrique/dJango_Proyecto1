@@ -297,6 +297,26 @@ def saludo7(request):
 
 # ==================================================
 """ USANDO PLANTILLAS INCRUSTADAS
-    ver archivo barra.html y miplantilla2.html para obserbar el ejemplo de como insertar la plantilla
+    ver archivo barra.html y miplantilla6.html para obserbar el ejemplo de como insertar la plantilla
 
 """
+
+# ======================================================================================================================
+# ======================================================================================================================
+# PLANTILLAS 7 - HERENCIA DE PLANTILLAS
+
+""" Ver los archivos:
+    plantillaBase.html, plantilla1.html, plantilla2.html
+"""
+
+
+def plantilla1(request):
+    fecha_actual = datetime.datetime.now()  # Obtiene la fecha del sistema
+    diccionario2 = {"dame_fecha": fecha_actual}
+    return render(request, "herencia/plantilla1.html", diccionario2)
+
+
+def plantilla2(request):
+    fecha_actual = datetime.datetime.now()  # Obtiene la fecha del sistema
+    diccionario2 = {"dame_fecha": fecha_actual}
+    return render(request, "herencia/plantilla2.html", diccionario2)
